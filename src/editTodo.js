@@ -36,10 +36,8 @@ const mapStateToProps = state => ({
   });
   
   
-  
   export default connect(mapStateToProps, {
     addTodo: actions.addTodo,
     editTodo: actions.editTodo,
     removeTodo: actions.removeTodo
   })(EditTodo);
-// export default EditTodo;

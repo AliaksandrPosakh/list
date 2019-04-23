@@ -11,19 +11,11 @@ class App extends Component {
     super(props);
     this.state = {
       isOpen: false,
-      todoList: [],
       editedTaskId: null
     };
     this.editTodoText = this.editTodoText.bind(this);
     this.saveEditText = this.saveEditText.bind(this);
   }
-
-  // componentDidMount() {
-  //   if (localStorage.getItem('todo') != undefined) {
-  //     const todoList = JSON.parse(localStorage.getItem('todo'));
-  //     this.setState({todoList});
-  //   }
-  // }
 
   saveEditText() {
     this.setState({isOpen: false});
@@ -60,8 +52,7 @@ class App extends Component {
   render() {
     return (
       <div>
-          <FormToAdd
-          ></FormToAdd>
+          <FormToAdd></FormToAdd>
           {this.renderTaskBlock()}
       </div>
     );
@@ -76,4 +67,3 @@ export default connect(mapStateToProps, {
   editTodo: actions.editTodo,
   removeTodo: actions.removeTodo
 })(App);
-// export default App;

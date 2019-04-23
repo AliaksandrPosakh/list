@@ -7,13 +7,5 @@ const Item = (props) => (
             <button onClick={props.removeTodo}>x</button><br/>
         </p>
 )
-            
 
-    
-// const mapStateToProps = state => ({
-//     todos: state
-// });
-// export default connect(mapStateToProps, {
-//     addTodo: actions.addTodo,
-// })(Item);
 export default Item;

@@ -15,7 +15,7 @@ class FormToAdd extends Component {
         this.setState({text: event.target.value});
     }
 
-    addTextInInput() {
+    addNewTodo() {
         this.props.addTodo(this.state.text);
         this.setState({text: ''});
     }
@@ -25,7 +25,7 @@ class FormToAdd extends Component {
         return (
             <div>
                 <input type='text' onChange={this.handleChange} value={this.state.text} placeholder='Add...' />
-                <button onClick={this.addTextInInput.bind(this)} >Add</button>
+                <button onClick={this.addNewTodo.bind(this)} >Add</button>
             </div>
         )
     }
@@ -37,6 +37,6 @@ const mapStateToProps = state => ({
 
 
 
-export default connect(mapStateToProps, {
+export default connect(mapStateToProps,{
     addTodo: actions.addTodo,
 })(FormToAdd);
