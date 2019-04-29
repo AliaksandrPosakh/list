@@ -15,14 +15,14 @@ class EditTodo extends Component {
     }
 
     onSaveButtonClick = () => {
-        const{editTodo} = this.props;
+        const{editTodo, closeEditForm} = this.props;
         editTodo(this.props.task.id, this.state.editText);
-        this.props.saveEditText();
+        closeEditForm();
     }
 
     render() {
         return (
-            <p>
+            <p className = 'editForm'>
                 <input onChange={this.handleChange} value={this.state.editText} />
                 <button onClick={this.onSaveButtonClick}>save</button>
             </p>
@@ -31,13 +31,13 @@ class EditTodo extends Component {
     }
     
 };
+
 const mapStateToProps = state => ({
-    todos: state
+    todos: state.listOfTodo,
+    editForm: state.isOpen,
   });
   
-  
   export default connect(mapStateToProps, {
-    addTodo: actions.addTodo,
+    closeEditForm: actions.closeEditForm,
     editTodo: actions.editTodo,
-    removeTodo: actions.removeTodo
   })(EditTodo);

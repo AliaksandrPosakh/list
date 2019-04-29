@@ -10,6 +10,11 @@ body {
     
 }
 .item {
+    
     border: 2px green solid;
     background-color:rgb(26, 230, 148);
+}
+
+.editForm {
+    left: 60%;
 }

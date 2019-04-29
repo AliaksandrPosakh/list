@@ -5,7 +5,7 @@ export const addTodo = text => ({
     payload: text
 });
 
-export const removeTodo = (id) => ({
+export const removeTodo = id => ({
     type: constans.REMOVE_TODO,
     payload: id
 });
@@ -16,4 +16,13 @@ export const editTodo = (id, text) => ({
         id,
         text
     }
+});
+
+export const openEditForm = id => ({
+    type: constans.OPEN_EDIT_FORM,
+    payload: id
+});
+
+export const closeEditForm = () => ({
+    type: constans.CLOSE_EDIT_FORM,
 })

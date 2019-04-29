@@ -9,6 +9,7 @@ class FormToAdd extends Component {
             text: '',
         }
         this.handleChange = this.handleChange.bind(this);
+        this.addNewTodo = this.addNewTodo.bind(this);
     }
 
     handleChange(event) {
@@ -16,23 +17,23 @@ class FormToAdd extends Component {
     }
 
     addNewTodo() {
-        this.props.addTodo(this.state.text);
+        const {addTodo} = this.props;
+        addTodo(this.state.text);
         this.setState({text: ''});
     }
 
-    render() {
-        
+    render() {        
         return (
-            <div>
+            <header>
                 <input type='text' onChange={this.handleChange} value={this.state.text} placeholder='Add...' />
-                <button onClick={this.addNewTodo.bind(this)} >Add</button>
-            </div>
+                <button onClick={this.addNewTodo} >Add</button>
+            </header>
         )
     }
 }
     
 const mapStateToProps = state => ({
-    todos: state,
+    todos: state.listOfTodo,
 });
 
 
