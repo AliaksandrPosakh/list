@@ -1,20 +1,19 @@
 body {
-    background-color: blue;
+    background-color: rgb(53, 233, 209);
 }
 .list {
     
     position: absolute;
-    left: 40%;
-    top: 45%;
-    width: 400px;
+    left: 5%;
+    top: 40%;
+    width: 90%;
     
 }
 .item {
-    
+    width: 90%;
     border: 2px green solid;
     background-color:rgb(26, 230, 148);
+    height: 50px;
+    margin-bottom: 3px;
 }
 
-.editForm {
-    left: 60%;
-}

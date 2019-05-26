@@ -1,14 +1,17 @@
 import React, {Component} from 'react';
-import Item from './todo-item';
-import List from './todo-list';
-import FormToAdd from './FormToAdd';
-import EditTodo from './editTodo';
+import Item from './components/todo-item';
+import List from './components/todo-list';
+import ToAddForm from './components/todoAddForm';
+import EditTodo from './components/editTodoForm';
 import {connect} from 'react-redux';
-import *as actions from './actions';
-
+import *as actions from './actions/actions';
+import { log } from 'util';
 
 class App extends Component {
-  
+  componentDidMount() {
+    const {getData} = this.props;
+    getData();
+  }
   renderTaskBlock() {
     const {removeTodo, openEditForm} = this.props;
     if(this.props.editForm) { 
@@ -16,8 +19,8 @@ class App extends Component {
         return task ? <EditTodo task={task}></EditTodo> : null
     }
     else
-        {
-        return <List>
+    return this.props.todos.length > 0 ?
+        <List>
           {
             this.props.todos.map(item => {
                 return <Item
@@ -27,18 +30,20 @@ class App extends Component {
                   removeTodo={removeTodo.bind(this, item.id)}
                   >
                   </Item>
-              })
+            })
                 
           }
         </List>
-      }
+       : null
       
     }
     
   render() {
+    console.log('render app', this.props);  
     return (
       <div>
-          <FormToAdd></FormToAdd>
+          <ToAddForm
+          ></ToAddForm>
           {this.renderTaskBlock()}
       </div>
     );
@@ -46,12 +51,14 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  todos: state.listOfTodo,
-  editForm: state.isOpen,
-  editedTaskId: state.editedTaskId,
+  todos: state.todoListReducer.listOfTodo,
+  editForm: state.todoListReducer.isOpen,
+  editedTaskId: state.todoListReducer.editedTaskId,
+  usersList: state.usersList,
 });
 
 export default connect(mapStateToProps, {
   removeTodo: actions.removeTodo,
   openEditForm: actions.openEditForm,
+  getData: actions.getData
 })(App);
