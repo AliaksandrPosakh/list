@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import *as actions from './actions';
+import *as actions from '../actions/actions';
 
-class FormToAdd extends Component {
+class ToAddForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,4 +40,4 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps,{
     addTodo: actions.addTodo,
-})(FormToAdd);
+})(ToAddForm);
